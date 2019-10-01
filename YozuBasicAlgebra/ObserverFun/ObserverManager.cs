@@ -33,8 +33,11 @@ namespace YozuBasicAlgebra.ObserverFun
 
 
                 first.IsSelected = false;
-                second.IsSelected = false;
+                //second.IsSelected = false;
                 third.IsSelected = false;
+
+                Console.WriteLine("Removing 'second' from the global list ...");
+                collection.Remove(second);
             }
         }
 
@@ -49,6 +52,7 @@ namespace YozuBasicAlgebra.ObserverFun
                     break;
                 case NotifyCollectionChangedAction.Remove:
                     var oldThing = (ObserverThing)e.OldItems[0];
+                    oldThing.IsSelected = false;
                     oldThing.PropertyChanged -= Thing_PropertyChanged;
                     break;
                 case NotifyCollectionChangedAction.Move:
