@@ -1,5 +1,7 @@
 ﻿using System;
 using YozuBasicAlgebra.BadInheritance;
+using YozuBasicAlgebra.Liskov;
+using YozuBasicAlgebra.ObserverFun;
 
 namespace YozuBasicAlgebra
 {
@@ -7,8 +9,6 @@ namespace YozuBasicAlgebra
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-
 #if false
             var manager = new NoInheritance.NoPolymorphManager();
             manager.DoYourThing();
@@ -18,9 +18,23 @@ namespace YozuBasicAlgebra
 #elif false
             var manager = new VirtualInheritance.VirtualPolymorphManager();
             manager.DoYourThing();
-#elif true
+#elif false
             var manager = new AbstractInheritance.AbstractPolymorphManager();
             manager.DoYourThing();
+#elif false
+            //ILogger logger = new DebugLogger();
+            ILogger logger = new ConsoleLogger();
+            var manager = new GoodLiskovManager(logger);
+            manager.DoYourThing();
+#elif false
+            //ILogger logger = new DebugLogger();
+            ILogger logger = new ConsoleLogger();
+            var manager = new BadLiskovManager(logger);
+            manager.DoYourThing();
+#elif true
+            var manager = new ObserverManager();
+            manager.DoYourThing();
+
 #endif
         }
     }
