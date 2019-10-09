@@ -18,7 +18,7 @@ namespace YozuBasicAlgebra
 #elif false
             var manager = new VirtualInheritance.VirtualPolymorphManager();
             manager.DoYourThing();
-#elif false
+#elif true
             var manager = new AbstractInheritance.AbstractPolymorphManager();
             manager.DoYourThing();
 #elif false
@@ -31,11 +31,11 @@ namespace YozuBasicAlgebra
             ILogger logger = new ConsoleLogger();
             var manager = new BadLiskovManager(logger);
             manager.DoYourThing();
-#elif true
+#elif false
             var manager = new ObserverManager();
             manager.DoYourThing();
 
 #endif
-        }
+         }
     }
 }

@@ -44,10 +44,11 @@ namespace YozuBasicAlgebra.ObserverFun
 
         private void Collection_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
+
             switch (e.Action)
             {
                 case NotifyCollectionChangedAction.Add:
-                    var newThing = (ObserverThing)e.NewItems[0];
+                    ObserverThing newThing = (ObserverThing)e.NewItems[0];
                     newThing.PropertyChanged += Thing_PropertyChanged;
                     break;
                 case NotifyCollectionChangedAction.Remove:
@@ -64,12 +65,15 @@ namespace YozuBasicAlgebra.ObserverFun
 
         private void Thing_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            var thing = (ObserverThing)sender;
+            if (e.PropertyName == nameof(ObserverThing.IsSelected))
+            {
+                ObserverThing thing = (ObserverThing)sender;
 
-            if (thing.IsSelected == true)
-                SelectedCollection.Add(thing);
-            else
-                SelectedCollection.Remove(thing);
+                if (thing.IsSelected == true)
+                    SelectedCollection.Add(thing);
+                else
+                    SelectedCollection.Remove(thing);
+            }
         }
 
         private void SelectedCollection_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)

@@ -11,6 +11,7 @@ namespace YozuBasicAlgebra.AbstractInheritance
 
         /// <summary>
         /// Unless this class is abstract, this method MUST be implemented, because it is marked abstract in the base class.
+        /// There is no implementation in the base class.
         /// </summary>
         public override void Update()
         {
@@ -19,6 +20,7 @@ namespace YozuBasicAlgebra.AbstractInheritance
 
         /// <summary>
         /// Unless this class is abstract, this method MUST be implemented, because it is marked abstract in the base class.
+        /// There is no implementation in the base class.
         /// </summary>
         public override void Render()
         {
