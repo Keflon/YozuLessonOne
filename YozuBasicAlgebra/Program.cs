@@ -2,6 +2,7 @@
 using YozuBasicAlgebra.BadInheritance;
 using YozuBasicAlgebra.Liskov;
 using YozuBasicAlgebra.ObserverFun;
+using YozuBasicAlgebra.TrafficLights;
 
 namespace YozuBasicAlgebra
 {
@@ -18,7 +19,7 @@ namespace YozuBasicAlgebra
 #elif false
             var manager = new VirtualInheritance.VirtualPolymorphManager();
             manager.DoYourThing();
-#elif true
+#elif false
             var manager = new AbstractInheritance.AbstractPolymorphManager();
             manager.DoYourThing();
 #elif false
@@ -34,8 +35,15 @@ namespace YozuBasicAlgebra
 #elif false
             var manager = new ObserverManager();
             manager.DoYourThing();
+#elif true
+            //ILogger logger = new DebugLogger();
+            ILogger logger = new ConsoleLogger();
+            //ITrafficLight lights = new RawTrafficLight(logger);
+            ITrafficLight lights = new CoolTrafficLight(logger);
+            var manager = new TrafficLightManager(logger, lights);
+            manager.DoYourThing();
 
 #endif
-         }
+        }
     }
 }
