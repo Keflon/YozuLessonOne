@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using YozuBasicAlgebra.Liskov;
 using FunctionZero.StateMachineZero;
+using YozuBasicAlgebra.Logging;
 
 namespace YozuBasicAlgebra.TrafficLights
 {
@@ -53,14 +53,9 @@ namespace YozuBasicAlgebra.TrafficLights
         #region ITrafficLight
         public LightState CurrentState { get; private set; } = LightState.None;
 
-        public void Next()
+        public void ProcessMessage(LightMessage message)
         {
-            _machine.EnqueueMessage(LightMessage.Next);
-        }
-
-        public void Reset()
-        {
-            _machine.EnqueueMessage(LightMessage.Reset);
+            _machine.EnqueueMessage(message);
         }
         #endregion
     }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using YozuBasicAlgebra.Liskov;
+using YozuBasicAlgebra.Logging;
 
 namespace YozuBasicAlgebra.TrafficLights
 {
@@ -21,13 +21,25 @@ namespace YozuBasicAlgebra.TrafficLights
         {
             _logger.Log("TrafficLightManager is resetting traffic lights ...");
 
-            Lights.Reset();
+            Lights.ProcessMessage(LightMessage.Reset);
+
+            ConsoleKey key;
             do
             {
-                _logger.Log("TrafficLightManager is nexting traffic lights ...");
-                Lights.Next();
+                key = Console.ReadKey().Key;
+
+                if (key == ConsoleKey.R)
+                {
+                    _logger.Log("TrafficLightManager is resetting traffic lights ...");
+                    Lights.ProcessMessage(LightMessage.Reset);
+                }
+                else
+                {
+                    _logger.Log("TrafficLightManager is nexting traffic lights ...");
+                    Lights.ProcessMessage(LightMessage.Next);
+                }
             }
-            while (Console.ReadKey().Key != ConsoleKey.Q);
+            while (key != ConsoleKey.Q);
         }
     }
 }

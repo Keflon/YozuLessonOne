@@ -1,6 +1,6 @@
 ﻿using System;
 using YozuBasicAlgebra.BadInheritance;
-using YozuBasicAlgebra.Liskov;
+using YozuBasicAlgebra.Logging;
 using YozuBasicAlgebra.ObserverFun;
 using YozuBasicAlgebra.TrafficLights;
 
@@ -38,8 +38,8 @@ namespace YozuBasicAlgebra
 #elif true
             //ILogger logger = new DebugLogger();
             ILogger logger = new ConsoleLogger();
-            //ITrafficLight lights = new RawTrafficLight(logger);
-            ITrafficLight lights = new CoolTrafficLight(logger);
+            ITrafficLight lights = new RawTrafficLight(logger);
+            //ITrafficLight lights = new CoolTrafficLight(logger);
             var manager = new TrafficLightManager(logger, lights);
             manager.DoYourThing();
 

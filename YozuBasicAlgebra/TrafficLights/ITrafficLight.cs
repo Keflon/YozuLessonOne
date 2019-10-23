@@ -8,8 +8,7 @@ namespace YozuBasicAlgebra.TrafficLights
     {
         LightState CurrentState { get; }
 
-        void Reset();
-        void Next();
+        void ProcessMessage(LightMessage message);
     }
 
     public enum LightState
@@ -24,6 +23,8 @@ namespace YozuBasicAlgebra.TrafficLights
     public enum LightMessage
     {
         Reset = 0,
-        Next
+        Next,
+        Dance,
+        OtherMessagesGoHere
     }
 }
